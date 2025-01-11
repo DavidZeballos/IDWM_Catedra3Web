@@ -1,0 +1,19 @@
+<div class="container mx-auto mt-10">
+  <h1 class="text-2xl font-semibold text-center mb-5 text-pastelBlue-dark">Lista de Posts</h1>
+
+  <div *ngIf="loading" class="text-center">
+    <p>Cargando posts...</p>
+  </div>
+
+  <div *ngIf="!loading && posts.length === 0" class="text-center">
+    <p class="text-gray-500">No hay posts disponibles.</p>
+  </div>
+
+  <div *ngIf="!loading && posts.length > 0" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div *ngFor="let post of posts" class="bg-white shadow-md rounded-lg p-4">
+      <img [src]="post.imageUrl" alt="{{ post.title }}" class="rounded-lg mb-4">
+      <h2 class="text-lg font-bold mb-2">{{ post.title }}</h2>
+      <p class="text-gray-500">Publicado: {{ post.publishDate }}</p>
+    </div>
+  </div>
+</div>

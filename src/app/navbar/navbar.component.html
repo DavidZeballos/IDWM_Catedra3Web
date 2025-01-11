@@ -1,0 +1,47 @@
+<nav class="bg-pastelBlue-dark text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <span class="text-lg font-bold">Cat3_Web</span>
+    <ul class="flex space-x-4">
+      <li *ngIf="isLoggedIn()">
+        <button
+          routerLink="/posts"
+          class="bg-white text-pastelBlue-dark py-2 px-4 rounded hover:bg-pastelBlue-light"
+        >
+          Posts
+        </button>
+      </li>
+      <li *ngIf="isLoggedIn()">
+        <button
+          routerLink="/posts/create"
+          class="bg-white text-pastelBlue-dark py-2 px-4 rounded hover:bg-pastelBlue-light"
+        >
+          Crear Post
+        </button>
+      </li>
+      <li *ngIf="!isLoggedIn()">
+        <button
+          routerLink="/login"
+          class="bg-white text-pastelBlue-dark py-2 px-4 rounded hover:bg-pastelBlue-light"
+        >
+          Iniciar Sesión
+        </button>
+      </li>
+      <li *ngIf="!isLoggedIn()">
+        <button
+          routerLink="/register"
+          class="bg-white text-pastelBlue-dark py-2 px-4 rounded hover:bg-pastelBlue-light"
+        >
+          Registrarse
+        </button>
+      </li>
+      <li *ngIf="isLoggedIn()">
+        <button
+          (click)="logout()"
+          class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700"
+        >
+          Cerrar Sesión
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

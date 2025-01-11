@@ -1,0 +1,42 @@
+<div class="max-w-md mx-auto mt-10 p-5 bg-white rounded-lg shadow-lg">
+  <h1 class="text-2xl font-semibold text-center mb-5 text-pastelBlue-dark">Crear Post</h1>
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label for="title" class="block text-sm font-medium text-gray-700">Título</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        class="form-input w-full mt-1 border-gray-300 rounded-md focus:ring-pastelBlue-dark focus:border-pastelBlue-dark"
+        placeholder="Título del post"
+      />
+      <small *ngIf="createForm.get('title')?.touched && createForm.get('title')?.invalid" class="text-red-500">
+        El título debe tener al menos 5 caracteres.
+      </small>
+    </div>
+
+    <div>
+      <label for="image" class="block text-sm font-medium text-gray-700">Imagen</label>
+      <input
+        id="image"
+        type="file"
+        (change)="onImageSelected($event)"
+        class="form-input w-full mt-1 border-gray-300"
+        accept="image/*"
+      />
+      <small *ngIf="createForm.get('image')?.touched && createForm.get('image')?.invalid" class="text-red-500">
+        Debe seleccionar una imagen válida.
+      </small>
+      <div *ngIf="imagePreview" class="mt-4">
+        <img [src]="imagePreview" alt="Vista previa" class="rounded-lg max-h-48">
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full bg-pastelBlue-dark text-white py-2 px-4 rounded-md hover:bg-pastelBlue-light focus:ring-2 focus:ring-pastelBlue-dark focus:ring-offset-2"
+      [disabled]="createForm.invalid">
+      Crear Post
+    </button>
+  </form>
+</div>
